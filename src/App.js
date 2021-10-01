@@ -1,13 +1,14 @@
 import React from "react";
-import Nav from "./componentes/header/nav.js";
-// import Header from "./componentes/header/header.js";
+// import Nav from "./componentes/header/nav.js";
+import Header from "./componentes/header/header.js";
+import Lista from "./componentes/items/itemsListContainer.js";
+import Alert from "./componentes/body/alert.js";
 
 function App() {
   return (
     <div className="App">
-      <Nav/>
-
-      <h1>Productos</h1>
+      <Header />
+      <Lista props="Productos" />
     </div>
   );
 }

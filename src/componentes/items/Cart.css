@@ -1,0 +1,9 @@
+.CarritoContenedor {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+.CarritoContenedor h2 {
+  margin-top: 10px;
+}
