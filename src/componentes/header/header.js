@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "./nav.js";
+import Nav from "./Nav.js";
 import "./HeaderEstilos.css";
 import Carrito from "../carrito/CartWidget.js";
 
