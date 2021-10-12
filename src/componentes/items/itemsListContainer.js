@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Cart.css";
-import Map from "./itemsList";
+import Items from "./Items.js";
+import ItemList from "./itemsList";
 
-const Lista = ({ props }) => {
+const ItemListContainer = ({ props }) => {
+  const ObtenerMangas = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(Items);
+    }, 2000);
+  }).catch((err) => {
+    console.log("Error");
+  });
+  useEffect(() => {
+    ObtenerMangas.then((resp) => console.log(resp));
+  });
+
   return (
     <div className="CarritoContenedor">
       <h2>{props}</h2>
-      <Map />
+      {Items.map((manga) => (
+        <ItemList key={manga.name} manga={manga} />
+      ))}
     </div>
   );
 };
 
-export default Lista;
+export default ItemListContainer;

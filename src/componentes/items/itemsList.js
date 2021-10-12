@@ -1,22 +1,17 @@
 import React from "react";
 import Items from "./Items.js";
+import ItemListContainer from "./itemsListContainer.js";
 
-const Map = () => {
-  const mapMangas = Items.map((item) => (
-    <li key={item.id}>
-      {item.name}
-      {item.precio}
-    </li>
-  ));
-  return <ul>{mapMangas}</ul>;
+const ItemList = ({ manga }) => {
+  return (
+    <div>
+      <h3>{manga.name}</h3>
+      <p>
+        {manga.precio}
+        {manga.stock}
+      </p>
+    </div>
+  );
 };
 
-// const ItemsList = new Promise((resolve, rejected) => {
-//   console.log("asd");
-//   setTimeout(() => {
-//     resolve(Items);
-//     ItemsList.then(resp);
-//   }, 2000);
-// });
-
-export default Map;
+export default ItemList;
