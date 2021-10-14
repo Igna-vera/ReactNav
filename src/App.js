@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./componentes/header/Header.js";
 import ItemListContainer from "./componentes/items/itemsListContainer.js";
 import Contador from "./componentes/body/itemCount.js";
+import ItemList from "./componentes/items/itemsList.js";
 
 function App() {
   return (
