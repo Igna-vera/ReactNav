@@ -1,15 +1,14 @@
 import React from "react";
-import Items from "./Items.js";
+import Item from "./Item.js";
 import ItemListContainer from "./itemsListContainer.js";
 
-const ItemList = ({ obtenerMangas }) => {
-  const { name, precio } = obtenerMangas;
-
+const ItemList = ({ mangas }) => {
   return (
-    <div>
-      <h3>{name}</h3>
-      <p>{precio}</p>
-    </div>
+    <>
+      {mangas.map((manga) => {
+        return <Item Item={manga} key={manga.id} />;
+      })}
+    </>
   );
 };
 
