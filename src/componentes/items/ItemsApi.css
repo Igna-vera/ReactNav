@@ -1,0 +1,11 @@
+.productosApi {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorApi {
+  display: flex;
+  flex-flow: row wrap;
+}

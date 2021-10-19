@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-import Items from "./Item.js";
 import ItemList from "./itemsList";
+import App2 from "./api";
 
 const ItemListContainer = ({ props }) => {
   const [mangas, setMangas] = useState([]);

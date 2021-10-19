@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import App2 from "../items/api";
 const Contador = ({ stock }) => {
   const [contador, setContador] = useState(0);
 
@@ -14,6 +14,7 @@ const Contador = ({ stock }) => {
   return (
     <div>
       <h1>{contador}</h1>
+
       <button onClick={incrementar}>Mas</button>
       <button onClick={descontar}>Menos</button>
     </div>

@@ -3,14 +3,15 @@ import React from "react";
 import Header from "./componentes/header/Header.js";
 import ItemListContainer from "./componentes/items/itemsListContainer.js";
 import Contador from "./componentes/body/itemCount.js";
-import ItemList from "./componentes/items/itemsList.js";
-
+import App2 from "./componentes/items/api.js";
+import ItemDetailContainer from "./componentes/items/ItemDetailContainer.js";
 function App() {
   return (
     <div className="App">
       <Header />
       <ItemListContainer props="Productos" />
-      <Contador stock="7">ASD</Contador>
+
+      <App2 />
     </div>
   );
 }
