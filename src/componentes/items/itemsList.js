@@ -1,6 +1,5 @@
 import React from "react";
 import Item from "./Item.js";
-import App2 from "./api.js";
 
 const ItemList = ({ mangas }) => {
   return (

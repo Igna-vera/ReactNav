@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import ItemList from "./itemsList";
-import App2 from "./api";
 
 const ItemListContainer = ({ props }) => {
   const [mangas, setMangas] = useState([]);
-  const ObtenerMangas = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve([
-        { id: 1, name: "Naruto", precio: 650, stock: 10 },
-        { id: 2, name: "Ganzt", precio: 550, stock: 5 },
-        { id: 3, name: "Kingdom", precio: 500, stock: 7 },
-        { id: 4, name: "Chainsaw man", precio: 450, stock: 8 },
-      ]);
-    }, 2000);
-  }).catch((err) => {
-    console.log(err);
-  });
 
+  const ObtenerMangas = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(
+        fetch("https://api.jikan.moe/v3/top/manga").then((res) => res.json())
+      );
+    }, 2000);
+  });
   useEffect(() => {
-    ObtenerMangas.then((resp) => setMangas(resp));
+    ObtenerMangas.then((res) => {
+      if (res.top) {
+        setMangas(res.top.slice(0, 6));
+      } else {
+        throw new Error("Datos incompletos");
+      }
+    });
   }, []);
+  console.log(mangas);
 
   return (
     <div className="CarritoContenedor">
       <h2>{props}</h2>
-      {
-        console.log(mangas)
-        /* {obtenerMangas.map((obtenerMangas) => (
+
+      {/* {obtenerMangas.map((obtenerMangas) => (
         <ItemList key={obtenerMangas.id} obtenerMangas={obtenerMangas} />
-      ))} */
-      }
+      ))} */}
       <ItemList mangas={mangas} />
     </div>
   );
