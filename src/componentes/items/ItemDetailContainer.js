@@ -1,33 +1,29 @@
 import React, { useState, useEffect } from "react";
+
+import { useParams } from "react-router";
 import ItemCount from "../body/itemCount";
 import ItemDetail from "./ItemDetail";
 import "./ItemsApi.css";
 
 const ItemDetailContainer = () => {
-  const [mangasApi, setMangas] = useState([]);
+  const [mangasId, setMangas] = useState([]);
+
+  const { id } = useParams();
 
   const ObtenerMangasApi = new Promise((resolve) => {
     setTimeout(() => {
       resolve(
-        fetch("https://api.jikan.moe/v3/top/manga").then((res) => res.json())
+        fetch(`https://api.jikan.moe/v3/manga/${id}`).then((res) => res.json())
       );
     }, 2000);
   });
   useEffect(() => {
     ObtenerMangasApi.then((res) => {
-      if (res.top) {
-        setMangas(res.top.slice(0, 6));
-      } else {
-        throw new Error("Datos incompletos");
-      }
+      setMangas(res);
     });
+    console.log(mangasId);
   }, []);
-  console.log(mangasApi);
-  return (
-    <div>
-      <ItemDetail mangasApi={mangasApi} />
-    </div>
-  );
-};
 
+  return <div>{mangasId && <ItemDetail mangasApi={mangasId} />}</div>;
+};
 export default ItemDetailContainer;

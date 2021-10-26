@@ -1,20 +1,19 @@
-import React from "react";
-import ItemDetailContainer from "./ItemDetailContainer.js";
+import React, { useState, useEffect } from "react";
+
 import "./ItemsApi.css";
 
 const ItemDetail = ({ mangasApi }) => {
-  const { title, volumes, start_date, end_date, image_url, score } = mangasApi;
+  const { title, volumes, start_date, end_date, image_url, score, mal_id } =
+    mangasApi;
 
+  console.log(mangasApi);
   return (
     <div className="contenedorApi">
-      {mangasApi.map((manga) => (
-        <div>
-          <h3>{manga.title}</h3> <img src={manga.image_url}></img>
-          <p>Tomos: {manga.volumes}</p>
-          <p>$ {manga.score}</p>
-          <p>Fecha de inicio: {manga.start_date}</p>
-        </div>
-      ))}
+      <h3>{title}</h3>
+      <img src={image_url} />
+
+      <p>$ {score}</p>
+      <p>Tomos: {volumes}</p>
     </div>
   );
 };

@@ -1,17 +1,19 @@
 import React from "react";
 import "./NavEstilos.css";
 import Carrito from "../carrito/CartWidget.js";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 const Nav = () => {
   return (
     <nav className="nav">
       <ul>
-        <li>Inicio</li>
+        <Link to="/">Inicio</Link>
 
-        <a href="/ItemDetail">
+        <Link to="/ItemDetailContainer">Detalles</Link>
+
+        {/* <a href="/ItemDetail">
           <li>Detalles</li>
-        </a>
+        </a> */}
 
         <Carrito />
       </ul>

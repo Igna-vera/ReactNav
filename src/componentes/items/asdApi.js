@@ -1,29 +1,26 @@
-// import React, { useEffect, useState } from "react";
-// import ItemDetail from "./ItemDetail";
+// const ItemDetailContainer = () => {
+//     const [mangasApi, setMangas] = useState([]);
 
-// const App2 = () => {
-//   const [mangasApi, setMangas] = useState([]);
-
-//   useEffect(() => {
-//     fetch("https://api.jikan.moe/v3/top/manga")
-//       .then((res) => res.json())
-//       .then((res) => {
+//     const ObtenerMangasApi = new Promise((resolve) => {
+//       setTimeout(() => {
+//         resolve(
+//           fetch("https://api.jikan.moe/v3/top/manga").then((res) => res.json())
+//         );
+//       }, 2000);
+//     });
+//     useEffect(() => {
+//       ObtenerMangasApi.then((res) => {
 //         if (res.top) {
 //           setMangas(res.top.slice(0, 6));
 //         } else {
 //           throw new Error("Datos incompletos");
 //         }
-//       })
-//       .catch((e) => {
-//         console.trace(e);
 //       });
-//   }, []);
-//   console.log(mangasApi);
-//   return (
-//     <div>
-//       <ItemDetail mangasApi={mangasApi} />
-//     </div>
-//   );
-// };
-
-// export default App2;
+//     }, []);
+//     console.log(mangasApi);
+//     return (
+//       <div>
+//         <ItemDetail mangasApi={mangasApi} key={mangasApi.id} />
+//       </div>
+//     );
+//   };
