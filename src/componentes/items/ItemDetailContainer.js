@@ -10,6 +10,10 @@ const ItemDetailContainer = () => {
 
   const { id } = useParams();
 
+  function onAdd(cantidad) {
+    alert(cantidad);
+  }
+
   const ObtenerMangasApi = new Promise((resolve) => {
     setTimeout(() => {
       resolve(
@@ -24,6 +28,8 @@ const ItemDetailContainer = () => {
     console.log(mangasId);
   }, []);
 
-  return <div>{mangasId && <ItemDetail mangasApi={mangasId} />}</div>;
+  return (
+    <div>{mangasId && <ItemDetail mangasApi={mangasId} onAdd={onAdd} />}</div>
+  );
 };
 export default ItemDetailContainer;

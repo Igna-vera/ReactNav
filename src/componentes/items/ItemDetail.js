@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-
+import ItemCount from "../body/itemCount";
 import "./ItemsApi.css";
 
-const ItemDetail = ({ mangasApi }) => {
+const ItemDetail = ({ mangasApi, onAdd }) => {
   const { title, volumes, start_date, end_date, image_url, score, mal_id } =
     mangasApi;
 
@@ -14,6 +14,7 @@ const ItemDetail = ({ mangasApi }) => {
 
       <p>$ {score}</p>
       <p>Tomos: {volumes}</p>
+      <ItemCount stock="6" onAdd={onAdd}></ItemCount>
     </div>
   );
 };
