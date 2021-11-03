@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 import { useParams } from "react-router";
-import ItemCount from "../body/itemCount";
+
 import ItemDetail from "./ItemDetail";
 import "./ItemsApi.css";
+import useCartContext from "../context/CartContext";
 
 const ItemDetailContainer = () => {
   const [mangasId, setMangas] = useState([]);
 
+  //Context
+  const { productos, addItem } = useCartContext;
+
   const { id } = useParams();
 
   function onAdd(cantidad) {
-    alert(cantidad);
+    addItem({
+      title: mangasId.title,
+      cantidad: cantidad,
+    });
   }
 
   const ObtenerMangasApi = new Promise((resolve) => {

@@ -12,7 +12,6 @@ const Item = ({ Item }) => {
       <p>Tomos: {volumes}</p>
       <p>$ {score}</p>
       <Link to={`/ItemDetailContainer/${mal_id}`}>Informacion</Link>
-      <ItemCount stock="5" />
     </div>
   );
 };
