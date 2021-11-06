@@ -8,16 +8,21 @@ import useCartContext from "../context/CartContext";
 
 const ItemDetailContainer = () => {
   const [mangasId, setMangas] = useState([]);
-
+  const [activo, setActivo] = useState(false);
   //Context
-  const { productos, addItem } = useCartContext;
+  const { addItem, removeItem, clear } = useCartContext();
 
   const { id } = useParams();
 
-  function onAdd(cantidad) {
+  function onAdd(contador) {
+    setActivo(true);
     addItem({
       title: mangasId.title,
-      cantidad: cantidad,
+      volumes: mangasId.volumes,
+      start_date: mangasId.start_date,
+      score: mangasId.score,
+      mal_id: mangasId.mal_id,
+      contador: contador,
     });
   }
 
@@ -36,7 +41,16 @@ const ItemDetailContainer = () => {
   }, []);
 
   return (
-    <div>{mangasId && <ItemDetail mangasApi={mangasId} onAdd={onAdd} />}</div>
+    <div>
+      {mangasId && (
+        <ItemDetail
+          mangasApi={mangasId}
+          onAdd={onAdd}
+          delet={removeItem}
+          clear={clear}
+        />
+      )}
+    </div>
   );
 };
 export default ItemDetailContainer;

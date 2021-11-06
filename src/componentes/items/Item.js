@@ -1,5 +1,4 @@
 import React from "react";
-import ItemCount from "../body/itemCount";
 import { Link } from "react-router-dom";
 const Item = ({ Item }) => {
   const { title, volumes, start_date, end_date, image_url, score, mal_id } =
