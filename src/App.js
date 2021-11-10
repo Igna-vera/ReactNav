@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./componentes/header/Header.js";
 import ItemListContainer from "./componentes/items/itemsListContainer.js";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import ItemDetailContainer from "./componentes/items/ItemDetailContainer";
+import ItemDetailContainer from "./componentes/ItemDetail/ItemDetailContainer";
 import { CartProvider } from "./componentes/context/CartContext";
 
 function App() {

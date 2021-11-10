@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-
 import { useParams } from "react-router";
-
 import ItemDetail from "./ItemDetail";
 import "./ItemsApi.css";
 import useCartContext from "../context/CartContext";
