@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
+import Nav from "../header/Nav";
 
 const ItemCount = ({ stock, onAdd, delet, mangasApi, clear }) => {
   const [contador, setContador] = useState(0);
+  const [activo, setActivo] = useState(true);
 
   const incrementar = () => {
     if (contador < stock) setContador(contador + 1);
@@ -14,6 +16,7 @@ const ItemCount = ({ stock, onAdd, delet, mangasApi, clear }) => {
 
   const agregar = () => {
     onAdd(contador);
+    setActivo(false);
   };
 
   return (
@@ -21,9 +24,15 @@ const ItemCount = ({ stock, onAdd, delet, mangasApi, clear }) => {
       <h1>{contador}</h1>
       <button onClick={incrementar}>+</button>
       <button onClick={descontar}>-</button>
-      <button onClick={agregar}>Agregar al carrito</button>
-      <button onClick={() => delet(mangasApi.mal_id)}>delet</button>
-      <button onClick={() => clear()}>Clear</button>
+      {activo ? (
+        <button onClick={agregar}>Agregar al carrito</button>
+      ) : (
+        <div>
+          <button>Terminar compra</button>
+          <button onClick={() => delet(mangasApi.mal_id)}>delet</button>
+          <button onClick={() => clear()}>Clear</button>
+        </div>
+      )}
     </div>
   );
 };
