@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ItemCount from "../body/itemCount";
+import ItemCount from "../ItemCount/itemCount";
 import "./ItemsApi.css";
 
 const ItemDetail = ({ mangasApi, onAdd, delet, clear }) => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../carrito/Cart.css";
+import "./Cart.css";
 import ItemList from "./itemsList";
 
 const ItemListContainer = ({ props }) => {
