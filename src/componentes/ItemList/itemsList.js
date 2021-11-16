@@ -1,13 +1,14 @@
 import React from "react";
 import Item from "./Item.js";
 
-const ItemList = ({ mangas }) => {
+const ItemList = ({ items }) => {
+  console.log("soy item list");
   return (
-    <>
-      {mangas.map((manga) => {
-        return <Item Item={manga} key={manga.mal_id} />;
-      })}
-    </>
+    <div>
+      {items.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
   );
 };
 

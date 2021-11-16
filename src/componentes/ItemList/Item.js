@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Item = ({ Item }) => {
-  const { title, volumes, start_date, end_date, image_url, score, mal_id } =
-    Item;
+const Item = ({ item }) => {
+  console.log("soy item");
+  const { title, volumes, mal_id, precio, pic, id } = item;
   return (
     <div style={{ border: "solid black 2px" }}>
       <h3>{title}</h3>
-      <img src={image_url}></img>
+      <img src={pic}></img>
 
       <p>Tomos: {volumes}</p>
-      <p>$ {score}</p>
-      <Link to={`ItemDetailContainer/${mal_id}`}>Informacion</Link>
+      <p>$ {precio}</p>
+      <span> {mal_id}</span>
+      <Link to={`ItemDetailContainer/${id}`}>Informacion</Link>
     </div>
   );
 };

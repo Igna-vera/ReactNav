@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ItemDetailContainer from "../src/componentes/ItemDetail/ItemDetailContainer";
 import { CartProvider } from "./componentes/context/CartContext";
 import Cart from "../src/componentes/carrito/Cart";
+import Item from "../src/componentes/ItemList/Item.js";
 
 function App() {
   return (
@@ -12,12 +13,13 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Header />
+
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/home/:id">
               <ItemListContainer props="Productos" />
             </Route>
 
-            <Route exact path="/ItemDetailContainer/:id">
+            <Route exact path="/home/ItemDetailContainer/:id">
               <ItemDetailContainer />
             </Route>
             <Route exact path="/carrito">

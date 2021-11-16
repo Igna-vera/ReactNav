@@ -8,6 +8,8 @@ export const CartProvider = ({ children }) => {
   const [productos, setProductos] = useState([]);
 
   const addItem = ({
+    id,
+    precio,
     title,
     volumes,
     start_date,
@@ -17,15 +19,17 @@ export const CartProvider = ({ children }) => {
     mal_id,
     contador,
   }) => {
-    if (isInCart(mal_id)) {
+    if (isInCart(id)) {
       const productosEnCarrito = [...productos];
-      const itemToAdd = productosEnCarrito.find((i) => i.mal_id === mal_id);
+      const itemToAdd = productosEnCarrito.find((i) => i.id === id);
       itemToAdd.contador += contador;
       setProductos([productosEnCarrito]);
     } else {
       setProductos([
         ...productos,
         {
+          id,
+          precio,
           title,
           volumes,
           start_date,
@@ -39,26 +43,30 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const removeItem = (mal_id) => {
+  const removeItem = (id) => {
     let carritoFilter = productos.filter((item) => {
-      return item["mal_id"] !== mal_id;
+      return item["id"] !== id;
     });
     setProductos(carritoFilter);
     return carritoFilter;
   };
 
-  const isInCart = (mal_id) => {
+  const isInCart = (id) => {
     return productos.some((item) => {
-      return item["mal_id"] === mal_id;
+      return item["id"] === id;
     });
   };
 
   const clear = () => {
     setProductos([]);
   };
+
+  const carrito = () => {
+    return productos.reduce((total, item) => total + item.contador, 0);
+  };
   const precioTotal = () => {
     return productos.reduce(
-      (total, item) => total + item.contador * item.score,
+      (total, item) => total + item.contador * item.precio,
       0
     );
   };
@@ -74,6 +82,7 @@ export const CartProvider = ({ children }) => {
         isInCart,
         clear,
         precioTotal,
+        carrito,
       }}
     >
       {children}

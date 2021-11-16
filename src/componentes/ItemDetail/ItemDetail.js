@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
 import ItemCount from "../ItemCount/itemCount";
 import "./ItemsApi.css";
 
 const ItemDetail = ({ mangasApi, onAdd, delet, clear }) => {
-  const { title, volumes, start_date, end_date, image_url, score, mal_id } =
-    mangasApi;
-
+  const { title, volumes, precio, pic, id } = mangasApi;
+  console.log("detalle");
   return (
     <div className="contenedorApi">
       <h3>{title}</h3>
-      <img src={image_url} />
+      <img src={pic} />
 
-      <p>$ {score}</p>
+      <p>$ {precio}</p>
       <p>Tomos: {volumes}</p>
 
       <ItemCount
