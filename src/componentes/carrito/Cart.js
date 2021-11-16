@@ -97,33 +97,31 @@ const Cart = () => {
               <p>Precio total: ${precioTotal()}</p>
 
               <button onClick={() => clear()}>Clear</button>
+              <form onSubmit={generarOrden} onChange={handleChange}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  value={formData.name}
+                ></input>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="tel"
+                  value={formData.tel}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  value={formData.email}
+                />
+                <button>Comprar</button>
+              </form>
             </>
           ))}
         </>
       )}
-      <form onSubmit={generarOrden} onChange={handleChange}>
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          value={formData.name}
-        ></input>
-        <input
-          type="text"
-          name="phone"
-          placeholder="tel"
-          value={formData.tel}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          value={formData.email}
-        />
-        <button>Enviar</button>
-      </form>
-
-      <button onClick={() => generarOrden()}>Realizar Compra</button>
     </>
   );
 };
