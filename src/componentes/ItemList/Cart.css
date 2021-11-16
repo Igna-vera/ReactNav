@@ -1,9 +1,13 @@
-/* .CarritoContenedor {
+.itemList {
   display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
+  flex-flow: row wrap;
 }
-.CarritoContenedor h2 {
-  margin-top: 10px;
-} */
+
+.items {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+.CarritoContenedor {
+  text-align: center;
+}

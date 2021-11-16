@@ -18,27 +18,31 @@ const ItemListContainer = ({ props }) => {
   //   }, 2000);
   // });
 
-  useEffect(() => {
-    if (id) {
-      const db = getFirestore();
-      db.collection(`Items`)
-        .get()
-        .then((resp) =>
-          setItems(resp.docs.map((it) => ({ id: it.id, ...it.data() })))
-        )
-        .catch((err) => console.log(err));
-    } else {
-      console.log("error");
-    }
+  useEffect(
+    () => {
+      if (id) {
+        const db = getFirestore();
+        db.collection(`Items`)
+          .get()
+          .then((resp) =>
+            setItems(resp.docs.map((it) => ({ id: it.id, ...it.data() })))
+          )
+          .catch((err) => console.log(err));
+      } else {
+        console.log("error");
+      }
 
-    // ObtenerMangas.then((res) => {
-    //   if (res.top) {
-    //     setMangas(res.top.slice(0, 6));
-    //   } else {
-    //     throw new Error("Datos incompletos");
-    //   }
-    // });
-  }, [id]);
+      // ObtenerMangas.then((res) => {
+      //   if (res.top) {
+      //     setMangas(res.top.slice(0, 6));
+      //   } else {
+      //     throw new Error("Datos incompletos");
+      //   }
+      // });
+    },
+    [id],
+    2000
+  );
   console.log(items);
   console.log(mangas);
 

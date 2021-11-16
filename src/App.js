@@ -5,7 +5,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ItemDetailContainer from "../src/componentes/ItemDetail/ItemDetailContainer";
 import { CartProvider } from "./componentes/context/CartContext";
 import Cart from "../src/componentes/carrito/Cart";
-import Item from "../src/componentes/ItemList/Item.js";
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
               <ItemListContainer props="Productos" />
             </Route>
 
-            <Route exact path="/home/ItemDetailContainer/:id">
+            <Route exact path="/ItemDetailContainer/:id">
               <ItemDetailContainer />
             </Route>
             <Route exact path="/carrito">

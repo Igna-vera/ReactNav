@@ -1,0 +1,9 @@
+.itemDetailContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.itemDetail {
+  border: 1px black solid;
+  margin-left: 40%;
+}

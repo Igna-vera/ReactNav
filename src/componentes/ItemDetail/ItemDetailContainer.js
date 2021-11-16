@@ -4,6 +4,7 @@ import ItemDetail from "./ItemDetail";
 import "./ItemsApi.css";
 import useCartContext from "../context/CartContext";
 import { getFirestore } from "../services/getFirestore";
+import "./itemDetail.css";
 
 const ItemDetailContainer = () => {
   const [mangasId, setMangas] = useState([]);
@@ -35,24 +36,10 @@ const ItemDetailContainer = () => {
       .get()
       .then((resp) => setMangas({ id: resp.id, ...resp.data() }))
       .catch((err) => console.log(err));
-    //.finally(()=> setLoading(false))
   }, [id]);
-  // const ObtenerMangasApi = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve(
-  //       fetch(`https://api.jikan.moe/v3/manga/${id}`).then((res) => res.json())
-  //     );
-  //   }, 2000);
-  // });
-  // useEffect(() => {
-  //   ObtenerMangasApi.then((res) => {
-  //     setMangas(res);
-  //   });
-  //   console.log(mangasId);
-  // }, []);
 
   return (
-    <div>
+    <div className="itemDetailContainer">
       {mangasId && (
         <ItemDetail
           mangasApi={mangasId}

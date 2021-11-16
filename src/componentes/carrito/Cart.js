@@ -3,7 +3,7 @@ import { useCartContext } from "../context/CartContext";
 import { Link, Route } from "react-router-dom";
 import firebase from "firebase";
 import { getFirestore } from "../services/getFirestore";
-
+import "./carrito.css";
 const Cart = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -79,50 +79,50 @@ const Cart = () => {
   console.log(formData);
 
   return (
-    <>
-      <h1>Carrito</h1>
-      {productos.length === 0 ? (
-        <>
-          <h3>Aun no hay nada</h3>
-          <Link to="/">seguir comprando</Link>
-        </>
-      ) : (
-        <>
-          {productos.map((item) => (
-            <>
-              <p>{item.title}</p>
-              <p>$ {item.score}</p>
-              <p>Cantidad de tomos: {item.tomos}</p>
-              <p>Agregados: {item.contador}</p>
-              <p>Precio total: ${precioTotal()}</p>
+    <div className="cart">
+      <>
+        {productos.length === 0 ? (
+          <>
+            <h3>Aun no hay nada</h3>
+            <Link to="/home/:id">seguir comprando</Link>
+          </>
+        ) : (
+          <>
+            {productos.map((item) => (
+              <div className="cartItems">
+                <p>{item.title}</p>
+                <p>$ {item.precio}</p>
 
-              <button onClick={() => clear()}>Clear</button>
-              <form onSubmit={generarOrden} onChange={handleChange}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="name"
-                  value={formData.name}
-                ></input>
-                <input
-                  type="text"
-                  name="phone"
-                  placeholder="tel"
-                  value={formData.tel}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="email"
-                  value={formData.email}
-                />
-                <button>Comprar</button>
-              </form>
-            </>
-          ))}
-        </>
-      )}
-    </>
+                <p>Agregados: {item.contador}</p>
+                <p>Precio total: ${precioTotal()}</p>
+              </div>
+            ))}
+            <button onClick={() => clear()}>Clear</button>
+          </>
+        )}
+      </>
+      <form onSubmit={generarOrden} onChange={handleChange}>
+        <input
+          type="text"
+          name="name"
+          placeholder="name"
+          value={formData.name}
+        ></input>
+        <input
+          type="number"
+          name="tel"
+          placeholder="tel"
+          value={formData.tel}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="email"
+          value={formData.email}
+        />
+        <button>Comprar</button>
+      </form>
+    </div>
   );
 };
 

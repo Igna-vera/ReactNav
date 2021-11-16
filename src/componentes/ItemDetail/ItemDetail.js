@@ -5,7 +5,7 @@ const ItemDetail = ({ mangasApi, onAdd, delet, clear }) => {
   const { title, volumes, precio, pic, id } = mangasApi;
   console.log("detalle");
   return (
-    <div className="contenedorApi">
+    <div className="itemDetail">
       <h3>{title}</h3>
       <img src={pic} />
 

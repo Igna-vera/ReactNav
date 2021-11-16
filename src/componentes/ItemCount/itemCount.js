@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ItemCount = ({ stock, onAdd, delet, mangasApi, clear }) => {
   const [contador, setContador] = useState(0);
@@ -26,7 +27,7 @@ const ItemCount = ({ stock, onAdd, delet, mangasApi, clear }) => {
         <button onClick={agregar}>Agregar al carrito</button>
       ) : (
         <div>
-          <button>Terminar compra</button>
+          <Link to="/carrito">Terminar compra</Link>
           <button onClick={() => delet(mangasApi.id)}>delet</button>
           <button onClick={() => clear()}>Clear</button>
         </div>
