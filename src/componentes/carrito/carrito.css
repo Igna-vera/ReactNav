@@ -8,3 +8,13 @@
   margin-left: 40%;
   flex: 1 1 50%;
 }
+
+.cartClear {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.cartCompra {
+  display: flex;
+  flex-flow: row wrap;
+}

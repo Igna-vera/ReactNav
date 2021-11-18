@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ItemDetailContainer from "../src/componentes/ItemDetail/ItemDetailContainer";
 import { CartProvider } from "./componentes/context/CartContext";
 import Cart from "../src/componentes/carrito/Cart";
+import Home from "../src/componentes/home/home";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           <Header />
 
           <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
             <Route exact path="/home/:id">
               <ItemListContainer props="Productos" />
             </Route>

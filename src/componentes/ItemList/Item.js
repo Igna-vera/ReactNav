@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const Item = ({ item }) => {
-  console.log("soy item");
   const { title, volumes, mal_id, precio, pic, id } = item;
   return (
     <div className="items" style={{ border: "solid black 2px" }}>

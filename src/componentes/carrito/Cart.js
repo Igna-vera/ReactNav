@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import firebase from "firebase";
 import { getFirestore } from "../services/getFirestore";
 import "./carrito.css";
+
 const Cart = () => {
   const [formData, setFormData] = useState({
     name: "",
     tel: "",
     email: "",
   });
-  const { productos, addItem, removeItem, isInCart, clear, precioTotal } =
-    useCartContext();
+  const { productos, clear, precioTotal } = useCartContext();
 
   const generarOrden = () => {
     let orden = {};
@@ -43,6 +43,7 @@ const Cart = () => {
           email: "",
         });
         console.log("terminó la compra");
+        alert("compra ingresada");
       });
 
     const itemsToUpdate = db.collection("Items").where(
@@ -66,8 +67,6 @@ const Cart = () => {
         console.log("resultado batch:", res);
       });
     });
-
-    console.log(orden);
   };
 
   const handleChange = (e) => {
@@ -82,12 +81,12 @@ const Cart = () => {
     <div className="cart">
       <>
         {productos.length === 0 ? (
-          <>
+          <div className="cartCompra">
             <h3>Aun no hay nada</h3>
             <Link to="/home/:id">seguir comprando</Link>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="cartClear">
             {productos.map((item) => (
               <div className="cartItems">
                 <p>{item.title}</p>
@@ -97,31 +96,33 @@ const Cart = () => {
                 <p>Precio total: ${precioTotal()}</p>
               </div>
             ))}
+
             <button onClick={() => clear()}>Clear</button>
-          </>
+
+            <form onSubmit={generarOrden} onChange={handleChange}>
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                value={formData.name}
+              ></input>
+              <input
+                type="number"
+                name="tel"
+                placeholder="tel"
+                value={formData.tel}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                value={formData.email}
+              />
+              <button>Comprar</button>
+            </form>
+          </div>
         )}
       </>
-      <form onSubmit={generarOrden} onChange={handleChange}>
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          value={formData.name}
-        ></input>
-        <input
-          type="number"
-          name="tel"
-          placeholder="tel"
-          value={formData.tel}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          value={formData.email}
-        />
-        <button>Comprar</button>
-      </form>
     </div>
   );
 };

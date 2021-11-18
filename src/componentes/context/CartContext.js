@@ -71,8 +71,6 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  console.log(isInCart);
-
   return (
     <CartContext.Provider
       value={{

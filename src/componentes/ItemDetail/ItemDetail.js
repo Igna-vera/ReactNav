@@ -2,7 +2,7 @@ import ItemCount from "../ItemCount/itemCount";
 import "./ItemsApi.css";
 
 const ItemDetail = ({ mangasApi, onAdd, delet, clear }) => {
-  const { title, volumes, precio, pic, id } = mangasApi;
+  const { title, precio, pic } = mangasApi;
   console.log("detalle");
   return (
     <div className="itemDetail">
@@ -10,10 +10,9 @@ const ItemDetail = ({ mangasApi, onAdd, delet, clear }) => {
       <img src={pic} />
 
       <p>$ {precio}</p>
-      <p>Tomos: {volumes}</p>
 
       <ItemCount
-        stock="6"
+        stock={10}
         onAdd={onAdd}
         delet={delet}
         mangasApi={mangasApi}

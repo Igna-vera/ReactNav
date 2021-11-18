@@ -5,52 +5,36 @@ import { getFirestore } from "../services/getFirestore";
 import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({ props }) => {
-  const [mangas, setMangas] = useState([]);
   const [items, setItems] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  // const ObtenerMangas = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve(
-  //       fetch("https://api.jikan.moe/v3/top/manga").then((res) => res.json())
-  //     );
-  //   }, 2000);
-  // });
+  useEffect(() => {
+    if (id) {
+      const db = getFirestore();
+      db.collection(`Items`)
+        .get()
+        .then((resp) =>
+          setItems(resp.docs.map((it) => ({ id: it.id, ...it.data() })))
+        )
+        .catch((err) => console.log(err));
 
-  useEffect(
-    () => {
-      if (id) {
-        const db = getFirestore();
-        db.collection(`Items`)
-          .get()
-          .then((resp) =>
-            setItems(resp.docs.map((it) => ({ id: it.id, ...it.data() })))
-          )
-          .catch((err) => console.log(err));
-      } else {
-        console.log("error");
-      }
-
-      // ObtenerMangas.then((res) => {
-      //   if (res.top) {
-      //     setMangas(res.top.slice(0, 6));
-      //   } else {
-      //     throw new Error("Datos incompletos");
-      //   }
-      // });
-    },
-    [id],
-    2000
-  );
-  console.log(items);
-  console.log(mangas);
+      setLoading(true);
+    } else {
+      console.log("error");
+    }
+  }, [id]);
 
   return (
     <div className="CarritoContenedor">
       <h2>{props}</h2>
-
-      <ItemList items={items} />
+      {loading ? (
+        <ItemList items={items} />
+      ) : (
+        <div>
+          <h4 color="white">Cargando...</h4>
+        </div>
+      )}
     </div>
   );
 };
