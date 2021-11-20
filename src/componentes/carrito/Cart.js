@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import firebase from "firebase";
+import { firebase } from "@firebase/app";
+import "@firebase/firestore";
 import { getFirestore } from "../services/getFirestore";
 import "./carrito.css";
+import CartProductos from "./CartProductos";
+import CartForm from "./CartForm";
 
 const Cart = () => {
   const [formData, setFormData] = useState({
@@ -75,7 +78,6 @@ const Cart = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(formData);
 
   return (
     <div className="cart">
@@ -87,39 +89,12 @@ const Cart = () => {
           </div>
         ) : (
           <div className="cartClear">
-            {productos.map((item) => (
-              <div className="cartItems">
-                <p>{item.title}</p>
-                <p>$ {item.precio}</p>
-
-                <p>Agregados: {item.contador}</p>
-                <p>Precio total: ${precioTotal()}</p>
-              </div>
-            ))}
-
-            <button onClick={() => clear()}>Clear</button>
-
-            <form onSubmit={generarOrden} onChange={handleChange}>
-              <input
-                type="text"
-                name="name"
-                placeholder="name"
-                value={formData.name}
-              ></input>
-              <input
-                type="number"
-                name="tel"
-                placeholder="tel"
-                value={formData.tel}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="email"
-                value={formData.email}
-              />
-              <button>Comprar</button>
-            </form>
+            <CartProductos />
+            <CartForm
+              formData={formData}
+              generarOrden={generarOrden}
+              handleChange={handleChange}
+            />
           </div>
         )}
       </>

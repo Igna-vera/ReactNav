@@ -1,16 +1,14 @@
 import ItemCount from "../ItemCount/itemCount";
 import "./ItemsApi.css";
 
-const ItemDetail = ({ mangasApi, onAdd, delet, clear }) => {
+const ItemDetail = ({ mangasApi, onAdd, delet, clear, loading }) => {
   const { title, precio, pic } = mangasApi;
-  console.log("detalle");
+
   return (
     <div className="itemDetail">
       <h3>{title}</h3>
-      <img src={pic} />
-
+      <img src={pic} alt="mangas" />
       <p>$ {precio}</p>
-
       <ItemCount
         stock={10}
         onAdd={onAdd}

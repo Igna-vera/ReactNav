@@ -5,7 +5,7 @@ const Item = ({ item }) => {
   return (
     <div className="items" style={{ border: "solid black 2px" }}>
       <h3>{title}</h3>
-      <img src={pic}></img>
+      <img src={pic} alt="mangas"></img>
 
       <p>Tomos: {volumes}</p>
       <p>$ {precio}</p>

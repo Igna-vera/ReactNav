@@ -8,7 +8,7 @@ import "./itemDetail.css";
 
 const ItemDetailContainer = () => {
   const [mangasId, setMangas] = useState([]);
-  const [activo, setActivo] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   //Context
   const { addItem, removeItem, clear } = useCartContext();
@@ -16,7 +16,6 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   function onAdd(contador) {
-    setActivo(true);
     addItem({
       id: mangasId.id,
       precio: mangasId.precio,
@@ -30,8 +29,8 @@ const ItemDetailContainer = () => {
   }
 
   useEffect(() => {
-    const dbQuey = getFirestore();
-    dbQuey
+    const itemDetail = getFirestore();
+    itemDetail
       .collection("Items")
       .doc(id)
       .get()
@@ -43,6 +42,7 @@ const ItemDetailContainer = () => {
     <div className="itemDetailContainer">
       {mangasId && (
         <ItemDetail
+          loading={loading}
           mangasApi={mangasId}
           onAdd={onAdd}
           delet={removeItem}
