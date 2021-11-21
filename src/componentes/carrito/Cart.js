@@ -11,7 +11,7 @@ import CartForm from "./CartForm";
 const Cart = () => {
   const [formData, setFormData] = useState({
     name: "",
-    tel: "",
+    phone: "",
     email: "",
   });
   const { productos, clear, precioTotal } = useCartContext();
@@ -33,7 +33,7 @@ const Cart = () => {
     ordersCol
       .add(orden)
       .then((IdDocumento) => {
-        console.log(IdDocumento.id);
+        alert("Su orden de compra es" + IdDocumento.id);
       })
       .catch((err) => {
         console.log(err);
@@ -45,8 +45,7 @@ const Cart = () => {
           tel: "",
           email: "",
         });
-        console.log("terminó la compra");
-        alert("compra ingresada");
+        alert("terminó la compra");
       });
 
     const itemsToUpdate = db.collection("Items").where(
@@ -66,9 +65,7 @@ const Cart = () => {
         });
       });
 
-      batch.commit().then((res) => {
-        console.log("resultado batch:", res);
-      });
+      batch.commit().then((res) => {});
     });
   };
 

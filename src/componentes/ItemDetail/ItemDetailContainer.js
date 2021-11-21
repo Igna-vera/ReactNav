@@ -8,7 +8,7 @@ import "./itemDetail.css";
 
 const ItemDetailContainer = () => {
   const [mangasId, setMangas] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   //Context
   const { addItem, removeItem, clear } = useCartContext();

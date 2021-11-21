@@ -1,4 +1,4 @@
-import React, { useEffect, useState, setTimeout } from "react";
+import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import ItemList from "./itemsList";
 import { getFirestore } from "../services/getFirestore";

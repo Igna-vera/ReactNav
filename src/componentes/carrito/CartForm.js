@@ -1,8 +1,21 @@
 import React from "react";
 
+import Schema from "./validacion";
 const CartForm = ({ generarOrden, handleChange, formData }) => {
+  const validacion = async (event) => {
+    event.preventDefault();
+    let data = {
+      name: event.target[0].value,
+      email: event.target[2].value,
+      phone: event.target[1].value,
+    };
+    const isValid = await Schema.isValid(data);
+    if (isValid === true) {
+      generarOrden();
+    }
+  };
   return (
-    <form onSubmit={generarOrden} onChange={handleChange}>
+    <form onSubmit={(generarOrden, validacion)} onChange={handleChange}>
       <input
         type="text"
         name="name"
@@ -11,9 +24,9 @@ const CartForm = ({ generarOrden, handleChange, formData }) => {
       ></input>
       <input
         type="number"
-        name="tel"
-        placeholder="tel"
-        defaultValue={formData.tel}
+        name="phone"
+        placeholder="phone"
+        defaultValue={formData.phone}
       />
       <input
         type="email"
