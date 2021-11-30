@@ -7,22 +7,36 @@ import { useParams } from "react-router-dom";
 const ItemListContainer = ({ props }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
+  const changeLoad = () => setLoading(true);
   const { id } = useParams();
+  const db = getFirestore();
+  const showItems = async () => {
+    if (id) {
+      try {
+        db.collection(`Items`)
+          .get()
+          .then((resp) =>
+            setItems(resp.docs.map((it) => ({ id: it.id, ...it.data() })))
+          );
+      } catch (error) {
+        console.log(error);
+      }
+      try {
+        db.collection(`Items`)
+          .get()
+          .then((resp) =>
+            setItems(resp.docs.map((it) => ({ id: it.id, ...it.data() })))
+          );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    setTimeout(changeLoad, 2000);
+  };
 
   useEffect(() => {
-    if (id) {
-      const db = getFirestore();
-      db.collection(`Items`)
-        .get()
-        .then((resp) =>
-          setItems(resp.docs.map((it) => ({ id: it.id, ...it.data() })))
-        )
-        .catch((err) => console.log(err));
-
-      setLoading(true);
-    } else {
-      console.log("error");
-    }
+    setLoading(false);
+    showItems();
   }, [id]);
 
   return (

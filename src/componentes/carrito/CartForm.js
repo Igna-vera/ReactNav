@@ -7,6 +7,7 @@ const CartForm = ({ generarOrden, handleChange, formData }) => {
     let data = {
       name: event.target[0].value,
       email: event.target[2].value,
+      email2: event.target[3].value,
       phone: event.target[1].value,
     };
     const isValid = await Schema.isValid(data);
@@ -34,6 +35,13 @@ const CartForm = ({ generarOrden, handleChange, formData }) => {
         placeholder="email"
         defaultValue={formData.email}
       />
+      <input
+        type="email2"
+        name="email2"
+        placeholder="Ingrese el email nuevamente"
+        defaultValue={formData.email2}
+      />
+
       <button>Comprar</button>
     </form>
   );

@@ -7,53 +7,31 @@ export const useCartContext = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [productos, setProductos] = useState([]);
 
-  const addItem = ({
-    id,
-    precio,
-    title,
-    volumes,
-    start_date,
-    end_date,
-    image_url,
-    score,
-    mal_id,
-    contador,
-  }) => {
-    if (isInCart(id)) {
-      const productosEnCarrito = [...productos];
-      const itemToAdd = productosEnCarrito.find((i) => i.id === id);
-      itemToAdd.contador += contador;
-      setProductos([productosEnCarrito]);
+  const addItem = (item, contador) => {
+    if (productos.some((p) => p.id === item.id)) {
+      let newCart = [...productos];
+
+      let repetido = newCart.find((p) => p.id === item.id);
+      console.log(repetido);
+      repetido.contador = repetido.contador + contador;
+
+      setProductos(newCart);
     } else {
-      setProductos([
-        ...productos,
-        {
-          id,
-          precio,
-          title,
-          volumes,
-          start_date,
-          end_date,
-          image_url,
-          score,
-          mal_id,
-          contador,
-        },
-      ]);
+      setProductos([...productos, item]);
     }
   };
 
   const removeItem = (id) => {
-    let carritoFilter = productos.filter((item) => {
-      return item["id"] !== id;
+    let carritoFilter = productos.filter((Items) => {
+      return Items["id"] !== id;
     });
     setProductos(carritoFilter);
     return carritoFilter;
   };
 
   const isInCart = (id) => {
-    return productos.some((item) => {
-      return item["id"] === id;
+    return productos.some((Items) => {
+      return Items["id"] === id;
     });
   };
 

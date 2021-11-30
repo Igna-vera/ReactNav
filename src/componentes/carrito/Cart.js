@@ -13,6 +13,7 @@ const Cart = () => {
     name: "",
     phone: "",
     email: "",
+    email2: "",
   });
   const { productos, clear, precioTotal } = useCartContext();
 
@@ -82,7 +83,7 @@ const Cart = () => {
         {productos.length === 0 ? (
           <div className="cartCompra">
             <h3>Aun no hay nada</h3>
-            <Link to="/home/:id">seguir comprando</Link>
+            <Link to="/:id">seguir comprando</Link>
           </div>
         ) : (
           <div className="cartClear">

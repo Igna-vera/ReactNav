@@ -18,14 +18,14 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/home/:id">
+            <Route exact path="/:id">
               <ItemListContainer props="Productos" />
             </Route>
 
             <Route exact path="/ItemDetailContainer/:id">
               <ItemDetailContainer />
             </Route>
-            <Route exact path="/carrito">
+            <Route exact path="/:id/carrito">
               <h1>carrito</h1>
               <Cart />
             </Route>

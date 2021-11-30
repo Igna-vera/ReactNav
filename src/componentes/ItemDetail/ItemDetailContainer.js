@@ -8,7 +8,6 @@ import "./itemDetail.css";
 
 const ItemDetailContainer = () => {
   const [mangasId, setMangas] = useState([]);
-  const [loading] = useState(false);
 
   //Context
   const { addItem, removeItem, clear } = useCartContext();
@@ -16,16 +15,19 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   function onAdd(contador) {
-    addItem({
-      id: mangasId.id,
-      precio: mangasId.precio,
-      title: mangasId.title,
-      volumes: mangasId.volumes,
-      start_date: mangasId.start_date,
-      score: mangasId.score,
-      mal_id: mangasId.mal_id,
-      contador: contador,
-    });
+    addItem(
+      {
+        id: mangasId.id,
+        precio: mangasId.precio,
+        title: mangasId.title,
+        volumes: mangasId.volumes,
+        start_date: mangasId.start_date,
+        score: mangasId.score,
+        mal_id: mangasId.mal_id,
+        contador: contador,
+      },
+      contador
+    );
   }
 
   useEffect(() => {
@@ -42,7 +44,6 @@ const ItemDetailContainer = () => {
     <div className="itemDetailContainer">
       {mangasId && (
         <ItemDetail
-          loading={loading}
           mangasApi={mangasId}
           onAdd={onAdd}
           delet={removeItem}
