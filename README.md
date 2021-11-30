@@ -5,11 +5,11 @@ Fue creado con Create React App.
 
 ## Dependencias Utilizadas 🛠️
 
-- [React JS]
-- [Font Awesome Icon]
-- [Firebase]
-- [React Router DOM]
-- [Yup]
+- [React JS] 
+- [Font Awesome Icon] - Iconos utilizados
+- [Firebase] - Utilizado como proveedor de base de datos
+- [React Router DOM] - Utilizado para crear las distintas rutas de la app
+- [Yup] - Validación de formularios
 
 ## Demo
 
